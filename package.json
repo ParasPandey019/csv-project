@@ -1,0 +1,11 @@
+{
+  "name": "csv-project",
+  "version": "1.0.0",
+  "description": "project to view csv files in tabular format",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paras Pandey",
+  "license": "ISC"
+}
