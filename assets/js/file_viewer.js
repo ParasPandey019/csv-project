@@ -1,4 +1,4 @@
-document.getElementById("go").addEventListener("click", searchTable);
+document.getElementById("search").addEventListener("click", searchTable);
 
 function searchTable() {
   const input = document.getElementById("search-input").value.toLowerCase();
