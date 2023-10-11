@@ -1,27 +1,9 @@
-document.getElementById("search").addEventListener("click", searchTable);
-
-function searchTable() {
-  const input = document.getElementById("search-input").value.toLowerCase();
-  console.log(input);
-  
-  const rows = document.getElementsByTagName("tr");
-
-  for (let i = 0; i < rows.length; i++) {
-    const rowText = rows[i].textContent.toLowerCase();
-    
-    if (rowText.includes(input)) {
-      rows[i].classList.add("highlight");
-    } else {
-      rows[i].classList.remove("highlight");
-    }
-  }
-}
-
+let jsonData = [];
 
 const itemsPerPage = 100;
 let currentPage = 1;
 
-let jsonData = [];
+
 function fetchData(){
   const fileName = document.getElementById("file-name").innerText;
   fetch(`/data/${fileName}`)
@@ -102,6 +84,27 @@ function jumpTo(){
 }
 
 goToPageButton.addEventListener('click', jumpTo);
+
+
+
+
+document.getElementById("search").addEventListener("click", searchTable);
+
+function searchTable() {
+  const input = document.getElementById("search-input").value.toLowerCase();
+  
+  const rows = jsonData.length;
+
+  // for (let i = 0; i < rows.length; i++) {
+  //   const rowText = rows[i].textContent.toLowerCase();
+    
+  //   if (rowText.includes(input)) {
+  //     rows[i].classList.add("highlight");
+  //   } else {
+  //     rows[i].classList.remove("highlight");
+  //   }
+  // }
+}
 
 
 fetchData();
