@@ -90,4 +90,18 @@ function generatePaginationButtons() {
   }
 }
 
+const pageInput = document.getElementById("page-input");
+const goToPageButton = document.getElementById("go-to-page");
+function jumpTo(){
+  const targetPage = parseInt(pageInput.value);
+  if (!isNaN(targetPage) && targetPage >= 1 && targetPage <= Math.ceil(jsonData.length / itemsPerPage)) {
+      currentPage = targetPage;
+      renderTable(currentPage);
+      generatePaginationButtons();
+  }
+}
+
+goToPageButton.addEventListener('click', jumpTo);
+
+
 fetchData();
