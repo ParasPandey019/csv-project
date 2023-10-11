@@ -9,3 +9,4 @@ db.once('open', function(){
     console.log('successfully connected to databse');
 })
 
+module.exports = db;
