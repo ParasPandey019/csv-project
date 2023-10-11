@@ -76,3 +76,19 @@ module.exports.jsonData = async function(req, res) {
     }
 }
 
+module.exports.delete = async function(req, res) {
+    try {
+        let isFile = await CSV.findOne({file: req.params.id});
+
+        if(isFile){
+            await CSV.deleteOne({file: req.params.id});            
+            return res.redirect("/");
+        }else{
+            console.log("File not found");
+            return res.redirect("/");
+        }
+    } catch (error) {
+        console.log('Error in fileController/delete', error);
+        return;
+    }
+}
