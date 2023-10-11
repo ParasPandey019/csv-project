@@ -57,4 +57,22 @@ module.exports.view = async function(req, res) {
     }
 }
 
+module.exports.jsonData = async function(req, res) {
+    try {
+        let csvFile = await CSV.findOne({fileName: req.params.fileName});
+        const results = [];
+        fs.createReadStream(csvFile.filePath) 
+        .pipe(csvParser({ separator: ',' }))
+        .on('data', (data) =>
+            results.push(data))
+        .on('end', () => {
+            res.json(results);
+        });
+
+
+    } catch (error) {
+        console.log('Error in fileController/view', error);
+        res.status(500).send('Internal server error');
+    }
+}
 
