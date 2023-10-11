@@ -24,3 +24,35 @@ module.exports.upload = async function(req, res) {
         res.status(500).send('Internal server error');
     }
 }
+
+
+module.exports.view = async function(req, res) {
+    try {
+        let csvFile = await CSV.findOne({file: req.params.id});
+        const results = [];
+        const header =[];
+        fs.createReadStream(csvFile.filePath) 
+        .pipe(csvParser())
+        .on('headers', (headers) => {
+            headers.map((head) => {
+                header.push(head);
+            });
+        })
+        .on('data', (data) =>
+        results.push(data))
+        .on('end', () => {
+            res.render("viewer", {
+                title: "File Viewer",
+                fileName: csvFile.fileName,
+                head: header,
+                data: results,
+                length: results.length
+            });
+        });
+
+
+    } catch (error) {
+        console.log('Error in fileController/view', error);
+        res.status(500).send('Internal server error');
+    }
+}
