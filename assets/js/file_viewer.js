@@ -10,9 +10,9 @@ function fetchData(){
   .then(response => response.json())
   .then(data => {
     jsonData = data;
-    console.log(jsonData);
-    renderTable(currentPage);
-    generatePaginationButtons();
+    // console.log(jsonData);
+    renderTable(currentPage, jsonData);
+    generatePaginationButtons(jsonData);
   })
   .catch(error => {
     console.error('Error:', error);
@@ -20,7 +20,7 @@ function fetchData(){
 }
 
 
-function renderTable(page) {
+function renderTable(page, jsonData) {
   const tableBody = document.getElementById('table-body');
   tableBody.innerHTML = ''; // Clear existing data
 
@@ -39,7 +39,7 @@ function renderTable(page) {
   };
 }
 
-function generatePaginationButtons() {
+function generatePaginationButtons(jsonData) {
   const pagination = document.getElementById('pagination');
   pagination.innerHTML = '';
 
@@ -65,8 +65,8 @@ function generatePaginationButtons() {
     button.textContent = i;
     button.addEventListener('click', () => {
       currentPage = i;
-      renderTable(currentPage);
-      generatePaginationButtons();
+      renderTable(currentPage, jsonData);
+      generatePaginationButtons(jsonData);
     });
     pagination.appendChild(button);
   }
@@ -78,8 +78,10 @@ function jumpTo(){
   const targetPage = parseInt(pageInput.value);
   if (!isNaN(targetPage) && targetPage >= 1 && targetPage <= Math.ceil(jsonData.length / itemsPerPage)) {
       currentPage = targetPage;
-      renderTable(currentPage);
-      generatePaginationButtons();
+      renderTable(currentPage, jsonData);
+      generatePaginationButtons(jsonData);
+  }else{
+    alert("enter valid number");
   }
 }
 
@@ -92,18 +94,18 @@ document.getElementById("search").addEventListener("click", searchTable);
 
 function searchTable() {
   const input = document.getElementById("search-input").value.toLowerCase();
-  
-  const rows = jsonData.length;
+  if(input.length>0){
+    const keys = Object.keys(jsonData[0]);
 
-  // for (let i = 0; i < rows.length; i++) {
-  //   const rowText = rows[i].textContent.toLowerCase();
-    
-  //   if (rowText.includes(input)) {
-  //     rows[i].classList.add("highlight");
-  //   } else {
-  //     rows[i].classList.remove("highlight");
-  //   }
-  // }
+    const filteredData = jsonData.filter(item => item[keys[1]].includes(input));
+    currentPage = 1;
+    renderTable(currentPage, filteredData);
+    generatePaginationButtons(filteredData);
+  }else{
+    currentPage = 1;
+    renderTable(currentPage, jsonData);
+    generatePaginationButtons(jsonData);
+  }
 }
 
 

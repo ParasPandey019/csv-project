@@ -84,3 +84,21 @@ td {
   background-color: black;
   color: white;
 }
+
+#page-buttons{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#pagination{
+  margin-right: 30px;
+}
+
+#table-div{
+  margin: auto;
+  width: 95vw;
+  max-height: 72.5vh;
+  overflow: auto;
+  margin-bottom: 10px;
+}
