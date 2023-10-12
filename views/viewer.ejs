@@ -20,12 +20,22 @@
 </div>
 <!-- search bar -->
 <div class="search-bar">
+    <label for="option-label" id="option-label">Search-By</label>
+    <select id="search-by" name="keys">
+        <% for(let h of head) { %>
+            <option value="<%= h %>"><%= h %></option>
+        <% } %>
+    </select>
     <form id="searchForm">
         <div class="search-box">
             <input type="text" id="search-input" placeholder="Search data...">
             <button id="search" class="search-btn" type="button">Search</button>
         </div>
     </form>
+</div>
+
+<div id="full-table-div">
+    <button id="full-table">View Full Table</button>
 </div>
 
 <!-- search results -->
@@ -48,7 +58,7 @@
     <div id="pagination">
         <!-- Pagination buttons will be added here -->
     </div>
-    <input type="number" id="page-input" placeholder="Page Number / <%= Math.ceil(length/100)%>">
+    <input type="number" id="page-input" placeholder="Page Number">
     <button id="go-to-page">Go to Page</button>
 </div>
 <script type="text/javascript" src="/js/file_viewer.js"></script>

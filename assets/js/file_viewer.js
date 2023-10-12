@@ -94,10 +94,9 @@ document.getElementById("search").addEventListener("click", searchTable);
 
 function searchTable() {
   const input = document.getElementById("search-input").value.toLowerCase();
+  const key = document.getElementById("search-by").value;
   if(input.length>0){
-    const keys = Object.keys(jsonData[0]);
-
-    const filteredData = jsonData.filter(item => item[keys[1]].toLowerCase().includes(input));
+    const filteredData = jsonData.filter(item => item[key].toLowerCase().includes(input));
     currentPage = 1;
     renderTable(currentPage, filteredData);
     generatePaginationButtons(filteredData);
@@ -107,6 +106,13 @@ function searchTable() {
     generatePaginationButtons(jsonData);
   }
 }
+
+document.getElementById("full-table").addEventListener("click", function(){
+    currentPage = 1;
+    renderTable(currentPage, jsonData);
+    generatePaginationButtons(jsonData);
+});
+
 
 
 fetchData();

@@ -10,6 +10,22 @@ body {
     margin: 5px 0;
     margin-bottom: 20px;
 }
+
+#option-label{
+  margin-right: 10px;
+  display: block;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+}
+
+#search-by{
+  height: 40px;
+  width: 100px;
+  margin-right: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+}
+
 .search-box {
     display: flex;
     justify-content: center;
@@ -93,6 +109,7 @@ td {
   display: flex;
   justify-content: center;
   align-content: center;
+  margin-bottom: 15px;
 }
 
 #pagination{
@@ -102,9 +119,10 @@ td {
 #table-div{
   margin: auto;
   width: 95vw;
-  max-height: 68vh;
+  max-height: 60vh;
   overflow: auto;
   margin-bottom: 10px;
+  border: 1px solid black;
 }
 
 thead{
@@ -118,5 +136,22 @@ thead{
   font-size: 25px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin-top: 50px;
+}
+
+#full-table-div{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#full-table{
+  height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #4b88fd;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
 }
 
