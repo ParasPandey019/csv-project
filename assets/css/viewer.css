@@ -7,8 +7,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
-    margin-top: 80px;
+    margin: 5px 0;
+    margin-bottom: 20px;
 }
 .search-box {
     display: flex;
@@ -27,7 +27,7 @@ body {
 #search-input:focus {
     outline: none;
 }
-#go {
+#search {
     height: 40px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -47,11 +47,15 @@ table {
   border-collapse: collapse;
   margin-bottom: 20px;
 }
+
+
 th,
 td {
   padding: 12px;
   text-align: left;
 }
+
+
 th {
   font-weight: bold;
   background-color: #4682b4;
@@ -98,7 +102,21 @@ td {
 #table-div{
   margin: auto;
   width: 95vw;
-  max-height: 72.5vh;
+  max-height: 68vh;
   overflow: auto;
   margin-bottom: 10px;
 }
+
+thead{
+  position: sticky;
+  top: 0;
+}
+
+#file-name {
+  text-align: center;
+  padding: 15px;
+  font-size: 25px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-top: 50px;
+}
+

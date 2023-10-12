@@ -97,7 +97,7 @@ function searchTable() {
   if(input.length>0){
     const keys = Object.keys(jsonData[0]);
 
-    const filteredData = jsonData.filter(item => item[keys[1]].includes(input));
+    const filteredData = jsonData.filter(item => item[keys[1]].toLowerCase().includes(input));
     currentPage = 1;
     renderTable(currentPage, filteredData);
     generatePaginationButtons(filteredData);

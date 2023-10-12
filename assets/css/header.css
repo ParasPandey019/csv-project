@@ -13,6 +13,7 @@ body {
     top: 0;
     left: 0;
     z-index: 10;
+    align-items: center;
 }
 .back-icon {
     font-size: 36px;
@@ -31,12 +32,7 @@ body {
     font-size: 18px;
     font-family: 'Monospace', Rockwell;
     padding: 10px;
-    padding-top: 22px;
+    padding-top: 10px;
     color: #757575;
-}
-.file-name {
-    margin-left: 18%;
-    padding: 17px;
-    font-size: 19px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-right: 22.5vw;
 }
