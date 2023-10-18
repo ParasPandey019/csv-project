@@ -62,6 +62,9 @@ function generatePaginationButtons(jsonData) {
 
   for (let i = startPage; i <= endPage; i++) {
     const button = document.createElement('button');
+    if(currentPage == i){
+      button.classList = "active-page";
+    }
     button.textContent = i;
     button.addEventListener('click', () => {
       currentPage = i;
