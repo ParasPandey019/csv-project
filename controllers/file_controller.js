@@ -81,7 +81,16 @@ module.exports.delete = async function(req, res) {
         let isFile = await CSV.findOne({file: req.params.id});
 
         if(isFile){
-            await CSV.deleteOne({file: req.params.id});            
+            await CSV.deleteOne({file: req.params.id});  
+            const filePath = isFile.filePath;
+
+            // Use fs.unlink to delete the file.
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                console.error('Error deleting the file:', err);
+                res.status(500).send('Error deleting the file');
+                }
+            });          
             return res.redirect("/");
         }else{
             console.log("File not found");
